@@ -2,7 +2,7 @@ export const site = {
   name: "Claudio Kamimura",
   role: "Professor de Guitarra e Violão",
   tagline: "Técnica, groove e atitude — do primeiro acorde ao solo.",
-  whatsapp: "5511999999999",
+  whatsapp: "5511980234364",
   whatsappMessage:
     "Olá Claudio! Quero agendar uma aula experimental de guitarra/violão.",
   instagram: "https://www.instagram.com/",
