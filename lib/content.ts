@@ -5,9 +5,9 @@ export const site = {
   whatsapp: "5511980234364",
   whatsappMessage:
     "Olá Claudio! Quero agendar uma aula experimental de guitarra/violão.",
-  instagram: "https://www.instagram.com/",
-  instagramHandle: "@claudiokamimura",
-  email: "aulas@claudiokamimura.com.br",
+  instagram: "https://www.instagram.com/claudio_kamimura/",
+  instagramHandle: "@claudio_kamimura",
+  email: "aulas@claudio_kamimura.com.br",
   city: "São Paulo",
 } as const
 
@@ -98,13 +98,13 @@ export const pricing = [
     id: "semanal",
     name: "Semanal",
     mode: "1x por semana",
-    price: "R$ 560",
+    price: "R$ 320",
     period: "/mês · 4 aulas",
-    priceNote: "R$ 140 /aula",
+    priceNote: "R$ 80 /aula",
     highlight: true,
     features: [
       "Presencial ou remota — você escolhe",
-      "50 min por encontro",
+      "60 min por encontro",
       "Plano de estudos contínuo",
       "Prioridade de horário",
       "Feedback entre as aulas",
@@ -114,13 +114,13 @@ export const pricing = [
     id: "quinzenal",
     name: "Quinzenal",
     mode: "A cada 2 semanas",
-    price: "R$ 300",
+    price: "R$ 230",
     period: "/mês · 2 aulas",
-    priceNote: "R$ 150 /aula",
+    priceNote: "R$ 115 /aula",
     highlight: false,
     features: [
       "Presencial ou remota — você escolhe",
-      "50 min por encontro",
+      "60 min por encontro",
       "Ritmo mais flexível",
       "Material e tabs digitais",
       "Acompanhamento entre encontros",
@@ -130,8 +130,8 @@ export const pricing = [
     id: "avulsa",
     name: "Avulsa",
     mode: "Sob demanda",
-    price: "R$ 180",
-    period: "/aula · 50 min",
+    price: "R$ 150",
+    period: "/aula · 60 min",
     priceNote: "Sem pacote mensal",
     highlight: false,
     features: [
@@ -169,16 +169,16 @@ export const instagramPosts = [
   {
     caption: "Riff da semana — power chords com atitude",
     image:
-      "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80",
   },
   {
     caption: "Setup do dia — Strat e amp",
     image:
-      "https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80",
   },
   {
     caption: "Estúdio: guitarras na parede",
     image:
-      "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80",
   },
 ] as const
