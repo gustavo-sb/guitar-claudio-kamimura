@@ -1,0 +1,57 @@
+export const tablatureUi = {
+  pageTitle: "Editor de Tablatura",
+  defaultTitle: "Minha Tablatura",
+  titleLabel: "Título",
+  titlePlaceholder: "Título da música",
+  artistLabel: "Artista",
+  artistPlaceholder: "Nome do artista",
+  bpmLabel: "Tempo (BPM)",
+  timeLabel: "Compasso",
+  tempoPrefix: "Tempo:",
+  timePrefix: "Compasso:",
+  backToSite: "Voltar ao site",
+  clear: "Limpar",
+  export: "Exportar",
+  exportImage: "Salvar como imagem (PNG)",
+  exportPrint: "Imprimir / PDF",
+  exportingImage: "Gerando imagem…",
+  exportImageError: "Não foi possível gerar a imagem. Tente imprimir em PDF.",
+  exportFretboardTitle: "Braço da guitarra",
+  playTablature: "Ouvir tablatura",
+  stopPlayback: "Parar",
+  playTablatureHint: "Reproduz todos os tempos em sequência",
+  measure: "Compasso",
+  pulse: "Pulso",
+  previousPulse: "Pulso anterior",
+  nextPulse: "Próximo pulso",
+  newMeasure: "Novo compasso",
+  removeMeasure: "Remover compasso",
+  cursorHelp:
+    "Cada pulso é um instante dentro do compasso. Ao adicionar uma nota, o pulso avança automaticamente. Segure Shift para acordes no mesmo pulso.",
+  cursorShortcuts: "Atalhos: ← pulso anterior · → próximo pulso",
+  fretboardTitle: "Braço da guitarra",
+  applyTechniqueHint: "Clique em uma nota para aplicar a técnica",
+  pendingLinkHint: "Passo 3: clique na nota de destino na mesma corda",
+  selectedNoteHint: "Passo 2: escolha slide, martelado ou puxada",
+  fretboardHelp:
+    "○ = corda solta · Clique para adicionar ou remover · Shift + clique = mesmo pulso (acorde)",
+  stringAria: (note: string, fret: number | "open") =>
+    `Corda ${note}, casa ${fret === "open" ? "solta" : fret}`,
+  tabStaffDefaultTitle: "Tablatura",
+  tabStaffEmpty: "Adicione notas no braço da guitarra para começar",
+  measureLabel: (n: number) => `Compasso ${n}`,
+  tuningLabel: "Afinação",
+  tuningPrefix: "Afinação:",
+  techniquesTitle: "Técnicas",
+  cancel: "Cancelar",
+  techniquesHint:
+    "Selecione a técnica e clique na nota. Slide, martelado e puxada pedem depois a nota de destino (mesma corda).",
+  loadDemo: "Carregar exemplo",
+  loadDemoHint: "Riff fictício original para testar layout e sistemas",
+} as const
+
+export const tablatureMeta = {
+  title: "Editor de Tablatura | Claudio Kamimura",
+  description:
+    "Crie tablaturas de guitarra com braço interativo, afinações e técnicas. Exporte para PDF ou impressão.",
+} as const

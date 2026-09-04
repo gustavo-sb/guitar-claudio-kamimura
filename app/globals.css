@@ -359,3 +359,64 @@
     transform: none !important;
   }
 }
+
+/* Tablature editor — print / PDF export */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 18mm 15mm;
+  }
+
+  body.tab-export-printing .editor-toolbar,
+  body.tab-export-printing .editor-controls,
+  body.tab-export-printing .editor-main,
+  body.tab-export-printing .tab-staff-screen {
+    display: none !important;
+  }
+
+  body.tab-export-printing .tab-export-sheet {
+    display: block !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    z-index: auto !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .tablature-editor {
+    background: white !important;
+    color: black !important;
+    min-height: auto !important;
+  }
+
+  .tab-staff-print {
+    border: none !important;
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .tab-staff-print .tab-staff-header {
+    border-color: #ccc !important;
+    margin-bottom: 8mm !important;
+  }
+
+  .tab-staff-print h2 {
+    color: black !important;
+  }
+
+  .tab-system {
+    break-inside: avoid;
+    margin-bottom: 10mm !important;
+  }
+
+  .fretboard-export {
+    break-inside: avoid;
+  }
+}

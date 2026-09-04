@@ -1,7 +1,12 @@
+import Link from "next/link"
 import { InstagramIcon } from "@/components/landing/instagram-icon"
 import { navLinks, site, whatsappUrl } from "@/lib/content"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
+
+function isExternalNav(href: string) {
+  return href.startsWith("/")
+}
 
 export function Footer() {
   return (
@@ -18,15 +23,25 @@ export function Footer() {
         </div>
 
         <nav className="flex flex-wrap gap-x-6 gap-y-3">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-xs tracking-[0.18em] text-muted-foreground uppercase transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            isExternalNav(link.href) ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-xs tracking-[0.18em] text-muted-foreground uppercase transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-xs tracking-[0.18em] text-muted-foreground uppercase transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            )
+          )}
         </nav>
 
         <div className="flex flex-col items-start gap-2">

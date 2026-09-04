@@ -33,6 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
+      data-scroll-behavior="smooth"
       className={cn(
         "dark h-full antialiased font-sans",
         inter.variable,

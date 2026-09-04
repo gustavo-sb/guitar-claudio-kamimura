@@ -1,10 +1,15 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { navLinks, site, whatsappUrl } from "@/lib/content"
 import { cn } from "@/lib/utils"
+
+function isExternalNav(href: string) {
+  return href.startsWith("/")
+}
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -42,15 +47,25 @@ export function Header() {
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-xs font-medium tracking-[0.16em] text-muted-foreground uppercase transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            isExternalNav(link.href) ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-xs font-medium tracking-[0.16em] text-muted-foreground uppercase transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-xs font-medium tracking-[0.16em] text-muted-foreground uppercase transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            )
+          )}
           <Button
             size="sm"
             render={
@@ -81,16 +96,27 @@ export function Header() {
         )}
       >
         <nav className="flex flex-col gap-5">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="font-display text-3xl tracking-wide text-foreground uppercase"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            isExternalNav(link.href) ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="font-display text-3xl tracking-wide text-foreground uppercase"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="font-display text-3xl tracking-wide text-foreground uppercase"
+              >
+                {link.label}
+              </a>
+            )
+          )}
           <Button
             className="mt-4 w-fit"
             onClick={() => setOpen(false)}
