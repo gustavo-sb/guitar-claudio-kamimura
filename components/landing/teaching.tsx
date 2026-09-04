@@ -21,19 +21,21 @@ export function Teaching() {
 
         <Separator className="mt-12" />
 
-        <ol className="grid gap-0 sm:grid-cols-2">
+        <ol className="grid gap-px bg-border sm:grid-cols-2">
           {teachingPillars.map((pillar, i) => (
-            <Reveal key={pillar.title} delayMs={i * 80}>
-              <li className="group border-border py-8 pr-6 sm:border-t sm:odd:border-r sm:odd:pr-10 sm:even:border-t sm:even:pl-10">
-                <Badge variant="secondary">{String(i + 1).padStart(2, "0")}</Badge>
-                <h3 className="mt-4 font-display text-2xl tracking-wide text-foreground uppercase transition-colors group-hover:text-primary md:text-3xl">
-                  {pillar.title}
-                </h3>
-                <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {pillar.description}
-                </p>
-              </li>
-            </Reveal>
+            <li key={pillar.title} className="bg-card">
+              <Reveal delayMs={i * 80}>
+                <div className="group px-6 py-10 sm:px-10 sm:py-12">
+                  <Badge variant="secondary">{String(i + 1).padStart(2, "0")}</Badge>
+                  <h3 className="mt-4 font-display text-2xl tracking-wide text-foreground uppercase transition-colors group-hover:text-primary md:text-3xl">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground md:text-base">
+                    {pillar.description}
+                  </p>
+                </div>
+              </Reveal>
+            </li>
           ))}
         </ol>
       </div>
