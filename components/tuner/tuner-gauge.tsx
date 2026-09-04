@@ -15,7 +15,7 @@ export function TunerGauge({ reading, listening }: TunerGaugeProps) {
   const inTune = reading?.inTune ?? false
   const hasSignal = Boolean(reading && reading.clarity > 0.45 && reading.volume > 0.012)
 
-  let guidance = tunerUi.waitingNote
+  let guidance: string = tunerUi.waitingNote
   if (hasSignal && reading) {
     if (inTune) guidance = tunerUi.inTune
     else if (reading.cents < 0) guidance = tunerUi.tighten
