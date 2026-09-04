@@ -21,6 +21,7 @@ export const navLinks = [
   { href: "#depoimentos", label: "Alunos" },
   { href: "#instagram", label: "Instagram" },
   { href: "/tablature", label: "Tablatura" },
+  { href: "/afinacao", label: "Afinador" },
 ] as const
 
 export const bio = {
