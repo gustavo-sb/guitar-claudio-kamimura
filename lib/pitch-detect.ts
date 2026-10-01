@@ -17,6 +17,9 @@ const A4_HZ = 440
 const MIN_HZ = 60
 const MAX_HZ = 1200
 
+/** RMS below this is treated as silence (laptop mics are often quiet). */
+export const MIN_SIGNAL_RMS = 0.004
+
 export type DetectedPitch = {
   frequency: number
   note: string
@@ -38,7 +41,7 @@ export function detectPitch(
     rms += sample * sample
   }
   rms = Math.sqrt(rms / size)
-  if (rms < 0.01) return null
+  if (rms < MIN_SIGNAL_RMS) return null
 
   const minLag = Math.floor(sampleRate / MAX_HZ)
   const maxLag = Math.min(Math.floor(sampleRate / MIN_HZ), size - 1)
@@ -95,7 +98,7 @@ export function detectPitch(
   if (frequency < MIN_HZ || frequency > MAX_HZ) return null
 
   const clarity = 1 - (yinBuffer[tauEstimate] ?? 1)
-  if (clarity < 0.55) return null
+  if (clarity < 0.45) return null
 
   return frequencyToPitch(frequency, clarity)
 }

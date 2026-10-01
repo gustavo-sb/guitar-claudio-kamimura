@@ -1,6 +1,7 @@
 "use client"
 
 import type { MicTunerReading } from "@/hooks/use-mic-tuner"
+import { MIN_SIGNAL_RMS } from "@/lib/pitch-detect"
 import { tunerUi } from "@/lib/tuner-ui"
 import { cn } from "@/lib/utils"
 
@@ -13,7 +14,9 @@ export function TunerGauge({ reading, listening }: TunerGaugeProps) {
   const needle = reading?.needle ?? 0
   const rotation = needle * 55
   const inTune = reading?.inTune ?? false
-  const hasSignal = Boolean(reading && reading.clarity > 0.45 && reading.volume > 0.012)
+  const hasSignal = Boolean(
+    reading && reading.clarity > 0.4 && reading.volume > MIN_SIGNAL_RMS
+  )
 
   let guidance: string = tunerUi.waitingNote
   if (hasSignal && reading) {

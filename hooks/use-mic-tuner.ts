@@ -5,6 +5,7 @@ import {
   centsToNeedle,
   detectPitch,
   isInTune,
+  MIN_SIGNAL_RMS,
   type DetectedPitch,
 } from "@/lib/pitch-detect"
 
@@ -19,6 +20,14 @@ export type MicTunerReading = DetectedPitch & {
   needle: number
   inTune: boolean
   volume: number
+}
+
+function createAudioContext(): AudioContext {
+  const Ctor =
+    window.AudioContext ||
+    (window as unknown as { webkitAudioContext: typeof AudioContext })
+      .webkitAudioContext
+  return new Ctor()
 }
 
 export function useMicTuner() {
@@ -47,6 +56,8 @@ export function useMicTuner() {
     contextRef.current = null
     analyserRef.current = null
     bufferRef.current = null
+    smoothCentsRef.current = 0
+    lastNoteRef.current = null
     setReading(null)
     setStatus("idle")
   }, [])
@@ -70,7 +81,7 @@ export function useMicTuner() {
 
     const detected = detectPitch(buffer, context.sampleRate)
 
-    if (!detected || volume < 0.012) {
+    if (!detected || volume < MIN_SIGNAL_RMS) {
       setReading((prev) =>
         prev
           ? {
@@ -110,8 +121,14 @@ export function useMicTuner() {
     setStatus("requesting")
     setErrorMessage(null)
 
+    let context: AudioContext | null = null
+    let stream: MediaStream | null = null
+
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
+      // Create during the click gesture so Safari/iOS can resume later.
+      context = createAudioContext()
+
+      stream = await navigator.mediaDevices.getUserMedia({
         audio: {
           echoCancellation: false,
           noiseSuppression: false,
@@ -119,12 +136,21 @@ export function useMicTuner() {
         },
       })
 
-      const context = new AudioContext()
+      if (context.state === "suspended") {
+        await context.resume()
+      }
+
       const source = context.createMediaStreamSource(stream)
       const analyser = context.createAnalyser()
       analyser.fftSize = 4096
       analyser.smoothingTimeConstant = 0
       source.connect(analyser)
+
+      // Some browsers only process AnalyserNode data when wired to destination.
+      const mute = context.createGain()
+      mute.gain.value = 0
+      analyser.connect(mute)
+      mute.connect(context.destination)
 
       streamRef.current = stream
       contextRef.current = context
@@ -136,6 +162,9 @@ export function useMicTuner() {
       setStatus("listening")
       frameRef.current = requestAnimationFrame(tick)
     } catch (error) {
+      stream?.getTracks().forEach((track) => track.stop())
+      void context?.close()
+
       const denied =
         error instanceof DOMException &&
         (error.name === "NotAllowedError" || error.name === "PermissionDeniedError")
