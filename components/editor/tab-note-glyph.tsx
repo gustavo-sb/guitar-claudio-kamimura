@@ -80,7 +80,7 @@ function LinkedGlyph({
       <span>{originFret}</span>
       <svg
         viewBox="0 0 14 16"
-        className="h-4 w-3.5 shrink-0 text-foreground"
+        className="h-4 w-3.5 shrink-0"
         aria-hidden
       >
         <line
@@ -105,7 +105,7 @@ function LinkedGlyph({
         <span>{originFret}</span>
         <span className={cn(pending && "text-muted-foreground/60")}>{destFret}</span>
       </span>
-      <svg viewBox="0 0 28 8" className="h-1.5 w-7 text-foreground" aria-hidden>
+      <svg viewBox="0 0 28 8" className="h-1.5 w-7" aria-hidden>
         <path
           d="M 2 6 Q 14 1 26 6"
           fill="none"
@@ -133,7 +133,7 @@ function ArtifactGlyph({
       {artifact === "tap" ? (
         <span className="mb-0.5 text-[9px] font-bold leading-none tracking-tight">T</span>
       ) : artifact === "vibrato" ? (
-        <svg viewBox="0 0 28 8" className="mb-0.5 h-2 w-7 text-foreground" aria-hidden>
+        <svg viewBox="0 0 28 8" className="mb-0.5 h-2 w-7" aria-hidden>
           <path
             d="M1 4 C3 1, 5 7, 7 4 S11 1, 13 4 S17 7, 19 4 S21 1, 23 4"
             fill="none"
@@ -144,7 +144,7 @@ function ArtifactGlyph({
         </svg>
       ) : artifact === "bend" ? (
         <span className="relative mb-0.5 flex h-3.5 w-6 items-end justify-center">
-          <svg viewBox="0 0 22 18" className="h-3.5 w-6 text-foreground" aria-hidden>
+          <svg viewBox="0 0 22 18" className="h-3.5 w-6" aria-hidden>
             <path
               d="M 2 16 Q 9 2 18 5"
               fill="none"

@@ -420,3 +420,9 @@
     break-inside: avoid;
   }
 }
+
+/* Technique marks inherit the staff color. On the white export sheet that
+   must stay near-black — the dark theme foreground is almost white. */
+.tab-export-sheet svg {
+  color: #111111;
+}
