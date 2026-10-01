@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import {
   centsToNeedle,
   detectPitch,
+  displayCents,
   isInTune,
   MIN_SIGNAL_RMS,
   type DetectedPitch,
@@ -42,6 +43,7 @@ export function useMicTuner() {
   const bufferRef = useRef<Float32Array | null>(null)
   const smoothCentsRef = useRef(0)
   const lastNoteRef = useRef<string | null>(null)
+  const inTuneRef = useRef(false)
 
   const stop = useCallback(() => {
     if (frameRef.current !== null) {
@@ -58,6 +60,7 @@ export function useMicTuner() {
     bufferRef.current = null
     smoothCentsRef.current = 0
     lastNoteRef.current = null
+    inTuneRef.current = false
     setReading(null)
     setStatus("idle")
   }, [])
@@ -98,17 +101,20 @@ export function useMicTuner() {
     if (lastNoteRef.current !== detected.note) {
       smoothCentsRef.current = detected.cents
       lastNoteRef.current = detected.note
+      inTuneRef.current = isInTune(detected.cents, false)
     } else {
+      // ~200ms smoothing so a ringing string does not yank the needle.
       smoothCentsRef.current =
-        smoothCentsRef.current * 0.72 + detected.cents * 0.28
+        smoothCentsRef.current * 0.84 + detected.cents * 0.16
+      inTuneRef.current = isInTune(smoothCentsRef.current, inTuneRef.current)
     }
 
     const cents = smoothCentsRef.current
     setReading({
       ...detected,
       cents,
-      needle: centsToNeedle(cents),
-      inTune: isInTune(cents),
+      needle: centsToNeedle(displayCents(cents)),
+      inTune: inTuneRef.current,
       volume,
     })
 
@@ -158,6 +164,7 @@ export function useMicTuner() {
       bufferRef.current = new Float32Array(analyser.fftSize)
       smoothCentsRef.current = 0
       lastNoteRef.current = null
+      inTuneRef.current = false
 
       setStatus("listening")
       frameRef.current = requestAnimationFrame(tick)

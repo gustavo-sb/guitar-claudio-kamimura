@@ -132,11 +132,50 @@ export function frequencyToPitch(
   }
 }
 
-export function centsToNeedle(cents: number, maxCents = 50): number {
+/** Full-scale needle travel. ±50 cents is one quarter-tone either way. */
+export const NEEDLE_RANGE_CENTS = 50
+
+/**
+ * In-tune window for a lesson tuner.
+ * ±5 cents is ensemble/strobe tight and a ringing guitar string jitters out of it.
+ * GuitarTuna's default mode buckets the first 10 cents together; beginner modes
+ * (Tunable skill level, Yousician) use a wider green zone. ±12 is close enough
+ * to sound in tune and stable enough to actually land.
+ */
+export const IN_TUNE_CENTS = 12
+
+/** Stay green until this far out, so the color does not flicker on a decaying note. */
+export const IN_TUNE_RELEASE_CENTS = 16
+
+export function centsToNeedle(
+  cents: number,
+  maxCents = NEEDLE_RANGE_CENTS
+): number {
   const clamped = Math.max(-maxCents, Math.min(maxCents, cents))
   return clamped / maxCents
 }
 
-export function isInTune(cents: number, threshold = 5): boolean {
-  return Math.abs(cents) <= threshold
+export function isInTune(cents: number, wasInTune = false): boolean {
+  const limit = wasInTune ? IN_TUNE_RELEASE_CENTS : IN_TUNE_CENTS
+  return Math.abs(cents) <= limit
+}
+
+/**
+ * Ease the needle toward center inside the green window, then continue
+ * linearly out to the rail so turning a peg still moves it smoothly.
+ */
+export function displayCents(cents: number): number {
+  const abs = Math.abs(cents)
+  const sign = Math.sign(cents) || 1
+  const settled = 4
+
+  if (abs <= IN_TUNE_CENTS) {
+    return sign * (abs / IN_TUNE_CENTS) * settled
+  }
+
+  const t = Math.min(
+    1,
+    (abs - IN_TUNE_CENTS) / (NEEDLE_RANGE_CENTS - IN_TUNE_CENTS)
+  )
+  return sign * (settled + t * (NEEDLE_RANGE_CENTS - settled))
 }

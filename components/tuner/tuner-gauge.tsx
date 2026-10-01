@@ -38,13 +38,21 @@ export function TunerGauge({ reading, listening }: TunerGaugeProps) {
         )}
       >
         <div className="mb-2 flex items-center justify-between px-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
-          <span className={cn(hasSignal && reading && reading.cents < -5 && "text-amber-400")}>
+          <span
+            className={cn(
+              hasSignal && reading && !inTune && reading.cents < 0 && "text-amber-400"
+            )}
+          >
             {tunerUi.tighten}
           </span>
           <span className={cn(inTune && hasSignal && "text-emerald-400")}>
             {tunerUi.centered}
           </span>
-          <span className={cn(hasSignal && reading && reading.cents > 5 && "text-sky-400")}>
+          <span
+            className={cn(
+              hasSignal && reading && !inTune && reading.cents > 0 && "text-sky-400"
+            )}
+          >
             {tunerUi.loosen}
           </span>
         </div>
@@ -54,8 +62,10 @@ export function TunerGauge({ reading, listening }: TunerGaugeProps) {
             <defs>
               <linearGradient id="tuner-arc" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="oklch(0.75 0.15 75)" />
-                <stop offset="45%" stopColor="oklch(0.78 0.18 145)" />
-                <stop offset="55%" stopColor="oklch(0.78 0.18 145)" />
+                <stop offset="32%" stopColor="oklch(0.75 0.15 75)" />
+                <stop offset="40%" stopColor="oklch(0.78 0.18 145)" />
+                <stop offset="60%" stopColor="oklch(0.78 0.18 145)" />
+                <stop offset="68%" stopColor="oklch(0.72 0.14 230)" />
                 <stop offset="100%" stopColor="oklch(0.72 0.14 230)" />
               </linearGradient>
             </defs>
@@ -156,9 +166,14 @@ export function TunerGauge({ reading, listening }: TunerGaugeProps) {
             </p>
             {hasSignal && reading ? (
               <p className="mt-1 font-mono text-sm text-muted-foreground">
-                {reading.frequency.toFixed(1)} Hz ·{" "}
-                {reading.cents >= 0 ? "+" : ""}
-                {reading.cents.toFixed(0)} cents
+                {reading.frequency.toFixed(1)} Hz
+                {inTune ? null : (
+                  <>
+                    {" · "}
+                    {reading.cents >= 0 ? "+" : ""}
+                    {reading.cents.toFixed(0)} cents
+                  </>
+                )}
               </p>
             ) : (
               <p className="mt-1 text-sm text-muted-foreground">
