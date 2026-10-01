@@ -68,6 +68,13 @@ export function Footer() {
             <InstagramIcon data-icon="inline-start" />
             {site.instagramHandle}
           </Button>
+          <Button
+            variant="link"
+            className="h-auto px-0"
+            render={<a href={`mailto:${site.email}`} />}
+          >
+            {site.email}
+          </Button>
         </div>
       </div>
 
