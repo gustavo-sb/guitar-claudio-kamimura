@@ -38,7 +38,7 @@ export function GuitarTuner() {
   )
   const tuning = getTunerTuningById(tuningId)
 
-  // Display strings thick→thin (6ª to 1ª) like Cifra Club suggestion order reversed for guitarists who start from low E, but Cifra shows E6ª A5ª... from thick. Our strings array is high→low index 0=1ª. Map to 6→1 for chips.
+  // Chips run thick to thin. The tuning array is high to low, so index 0 is the 1st string.
   const stringTargets = tuning.strings.map((note, index) => ({
     stringNum: index + 1,
     note,
@@ -290,7 +290,7 @@ export function GuitarTuner() {
       </main>
       <p className="px-5 py-6 text-center text-xs text-muted-foreground">
         <Link
-          href="/privacidade"
+          href="/privacy"
           className="underline-offset-4 hover:text-foreground hover:underline"
         >
           Política de privacidade

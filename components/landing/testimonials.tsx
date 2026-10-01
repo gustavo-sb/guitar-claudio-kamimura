@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator"
 
 export function Testimonials() {
   return (
-    <section id="depoimentos" className="section-pad relative">
+    <section id="testimonials" className="section-pad relative">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <Reveal>
           <p className="section-kicker">Depoimentos</p>

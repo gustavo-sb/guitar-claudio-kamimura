@@ -571,7 +571,7 @@ export function TablatureEditor() {
             <Button
               variant="outline"
               size="sm"
-              render={<Link href="/afinacao" />}
+              render={<Link href="/tuner" />}
             >
               <Music2 />
               <span className="hidden sm:inline">Afinação</span>
@@ -693,7 +693,7 @@ export function TablatureEditor() {
 
       <p className="px-5 py-6 text-center text-xs text-muted-foreground">
         <Link
-          href="/privacidade"
+          href="/privacy"
           className="underline-offset-4 hover:text-foreground hover:underline"
         >
           Política de privacidade

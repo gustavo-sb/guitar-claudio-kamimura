@@ -87,7 +87,7 @@ export function Gallery() {
   const bottomItems = rest.slice(3)
 
   return (
-    <section id="galeria" className="section-pad relative overflow-hidden">
+    <section id="gallery" className="section-pad relative overflow-hidden">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <Reveal>
           <p className="section-kicker">Galeria</p>

@@ -84,7 +84,7 @@ export function Footer() {
           © {new Date().getFullYear()} {site.name}
         </p>
         <Link
-          href="/privacidade"
+          href="/privacy"
           className="underline-offset-4 hover:text-foreground hover:underline"
         >
           Política de privacidade

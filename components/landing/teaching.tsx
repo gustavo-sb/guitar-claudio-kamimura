@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator"
 
 export function Teaching() {
   return (
-    <section id="ensino" className="section-pad relative bg-card">
+    <section id="teaching" className="section-pad relative bg-card">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <Reveal>
           <p className="section-kicker">Estilo de ensino</p>

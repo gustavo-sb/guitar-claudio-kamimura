@@ -35,6 +35,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: "/afinacao", destination: "/tuner", permanent: true },
+      { source: "/privacidade", destination: "/privacy", permanent: true },
+    ]
+  },
   async headers() {
     return [
       {

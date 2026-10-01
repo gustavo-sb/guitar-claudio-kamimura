@@ -41,7 +41,7 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20 md:px-8">
-        <a href="#topo" className="relative z-10">
+        <a href="#top" className="relative z-10">
           <span className="font-display text-xl tracking-[0.08em] text-foreground uppercase md:text-2xl">
             {site.name.split(" ")[0]}
             <span className="text-primary">{" "}{site.name.split(" ").slice(1).join(" ")}</span>

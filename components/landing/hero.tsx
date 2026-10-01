@@ -6,7 +6,7 @@ import Image from "next/image"
 export function Hero() {
   return (
     <section
-      id="topo"
+      id="top"
       className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden"
     >
       <Image
@@ -56,7 +56,7 @@ export function Hero() {
             Agendar aula experimental
             <ArrowDownRight data-icon="inline-end" />
           </Button>
-          <Button size="lg" variant="outline" render={<a href="#galeria" />}>
+          <Button size="lg" variant="outline" render={<a href="#gallery" />}>
             Ver performances
           </Button>
         </div>

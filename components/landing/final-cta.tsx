@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export function FinalCta() {
   return (
-    <section id="agendar" className="relative overflow-hidden py-24 md:py-32">
+    <section id="schedule" className="relative overflow-hidden py-24 md:py-32">
       <div className="cta-stage" aria-hidden />
       <div className="noise-layer" aria-hidden />
 

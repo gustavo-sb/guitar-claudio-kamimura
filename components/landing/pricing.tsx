@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils"
 
 export function Pricing() {
   return (
-    <section id="valores" className="section-pad relative bg-card">
+    <section id="pricing" className="section-pad relative bg-card">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <Reveal>
           <p className="section-kicker">Valores</p>

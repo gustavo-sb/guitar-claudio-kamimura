@@ -15,13 +15,13 @@ export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURICompo
 
 export const navLinks = [
   { href: "#bio", label: "Bio" },
-  { href: "#ensino", label: "Ensino" },
-  { href: "#galeria", label: "Galeria" },
-  { href: "#valores", label: "Valores" },
-  { href: "#depoimentos", label: "Alunos" },
+  { href: "#teaching", label: "Ensino" },
+  { href: "#gallery", label: "Galeria" },
+  { href: "#pricing", label: "Valores" },
+  { href: "#testimonials", label: "Alunos" },
   { href: "#instagram", label: "Instagram" },
   { href: "/tablature", label: "Tablatura" },
-  { href: "/afinacao", label: "Afinador" },
+  { href: "/tuner", label: "Afinador" },
 ] as const
 
 export const bio = {
