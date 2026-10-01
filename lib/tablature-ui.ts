@@ -46,8 +46,6 @@ export const tablatureUi = {
   cancel: "Cancelar",
   techniquesHint:
     "Selecione a técnica e clique na nota. Slide, martelado e puxada pedem depois a nota de destino (mesma corda).",
-  loadDemo: "Carregar exemplo",
-  loadDemoHint: "Riff fictício original para testar layout e sistemas",
 } as const
 
 export const tablatureMeta = {

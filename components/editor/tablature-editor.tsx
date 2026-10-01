@@ -12,7 +12,6 @@ import {
 } from "@/components/editor/tuning-selector"
 import { Button } from "@/components/ui/button"
 import { useTabAudio } from "@/hooks/use-tab-audio"
-import { createDemoSong } from "@/lib/tab-demo-song"
 import {
   createInitialMeasures,
   createMeasure,
@@ -42,7 +41,6 @@ import { tablatureUi } from "@/lib/tablature-ui"
 import {
   ChevronLeft,
   ChevronRight,
-  FileMusic,
   Music2,
   Pause,
   Play,
@@ -551,17 +549,6 @@ export function TablatureEditor() {
     setSelectedNote(null)
   }
 
-  const loadDemo = () => {
-    stopPlayback()
-    const demo = createDemoSong()
-    setMetadata(demo.metadata)
-    setMeasures(demo.measures)
-    setCursor({ measureIndex: 0, beatIndex: 0 })
-    setSelectedTechnique(null)
-    setPendingLink(null)
-    setSelectedNote(null)
-  }
-
   return (
     <div className="tablature-editor min-h-screen bg-background">
       <header className="editor-toolbar sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-md">
@@ -601,16 +588,6 @@ export function TablatureEditor() {
               <span className="hidden sm:inline">
                 {isPlaying ? tablatureUi.stopPlayback : tablatureUi.playTablature}
               </span>
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={loadDemo}
-              title={tablatureUi.loadDemoHint}
-            >
-              <FileMusic />
-              <span className="hidden sm:inline">{tablatureUi.loadDemo}</span>
             </Button>
             <Button type="button" variant="outline" size="sm" onClick={clearAll}>
               <RotateCcw />
