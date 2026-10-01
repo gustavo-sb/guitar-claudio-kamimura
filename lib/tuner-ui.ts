@@ -24,6 +24,8 @@ export const tunerUi = {
   centered: "No centro",
   stepsTitle: "Como afinar",
   step1: "Ative o microfone quando o navegador pedir permissão.",
+  micPrivacy:
+    "O áudio é analisado só neste aparelho. Ele não é gravado nem enviado.",
   step2: "Aproxime o instrumento do microfone e toque uma corda.",
   step3: "Ajuste a tarraxa até o ponteiro ficar no centro (verde).",
   stepFlat: "Nota baixa → aperte a corda",

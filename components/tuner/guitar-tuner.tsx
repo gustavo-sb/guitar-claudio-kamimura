@@ -140,6 +140,7 @@ export function GuitarTuner() {
               <h2 className="font-display text-xl tracking-wide text-foreground uppercase">
                 {tunerUi.stepsTitle}
               </h2>
+              <p className="mt-3 text-sm text-muted-foreground">{tunerUi.micPrivacy}</p>
               <ol className="mt-4 space-y-3 text-sm text-muted-foreground">
                 <li>
                   <span className="font-medium text-foreground">1.</span>{" "}
@@ -287,6 +288,14 @@ export function GuitarTuner() {
           </div>
         </section>
       </main>
+      <p className="px-5 py-6 text-center text-xs text-muted-foreground">
+        <Link
+          href="/privacidade"
+          className="underline-offset-4 hover:text-foreground hover:underline"
+        >
+          Política de privacidade
+        </Link>
+      </p>
     </div>
   )
 }

@@ -62,49 +62,49 @@ export const galleryItems = [
     kind: "Performance",
     image:
       "https://images.unsplash.com/photo-1462965326201-d02e4f455804?auto=format&fit=crop&w=1200&q=80",
-    videoUrl: "https://www.youtube.com/embed/QRum2lHu4oM",
+    videoUrl: "https://www.youtube-nocookie.com/embed/QRum2lHu4oM",
   },
   {
     title: "Pentatônica maior e menor",
     kind: "Dica",
     image:
       "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1200&q=80",
-    videoUrl: "https://www.youtube.com/embed/TFdFFcsV2tg",
+    videoUrl: "https://www.youtube-nocookie.com/embed/TFdFFcsV2tg",
   },
   {
     title: "Arpejos com sweep",
     kind: "Técnica",
     image:
       "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?auto=format&fit=crop&w=1200&q=80",
-    videoUrl: "https://www.youtube.com/embed/BRUbSy_x3BU",
+    videoUrl: "https://www.youtube-nocookie.com/embed/BRUbSy_x3BU",
   },
   {
     title: "Tríades abertas",
     kind: "Harmonia",
     image:
       "https://images.unsplash.com/photo-1605618692258-6a0bf2dc44cd?auto=format&fit=crop&w=1200&q=80",
-    videoUrl: "https://www.youtube.com/embed/oHCmp7MuSqI",
+    videoUrl: "https://www.youtube-nocookie.com/embed/oHCmp7MuSqI",
   },
   {
     title: "Inversão de acordes",
     kind: "Harmonia",
     image:
       "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80",
-    videoUrl: "https://www.youtube.com/embed/pe9XNkbuokY",
+    videoUrl: "https://www.youtube-nocookie.com/embed/pe9XNkbuokY",
   },
   {
     title: "React Eli Soares",
     kind: "React",
     image:
       "https://images.unsplash.com/photo-1579797990179-4ca11c8b47fd?auto=format&fit=crop&w=1200&q=80",
-    videoUrl: "https://www.youtube.com/embed/iMmnPUlS43w",
+    videoUrl: "https://www.youtube-nocookie.com/embed/iMmnPUlS43w",
   },
   {
     title: "Dedilhado clássico",
     kind: "Aula",
     image:
       "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=1200&q=80",
-    videoUrl: "https://www.youtube.com/embed/BvSA448Ukuc",
+    videoUrl: "https://www.youtube-nocookie.com/embed/BvSA448Ukuc",
   },
 ] as const
 

@@ -691,6 +691,15 @@ export function TablatureEditor() {
         />
       </main>
 
+      <p className="px-5 py-6 text-center text-xs text-muted-foreground">
+        <Link
+          href="/privacidade"
+          className="underline-offset-4 hover:text-foreground hover:underline"
+        >
+          Política de privacidade
+        </Link>
+      </p>
+
       <div
         ref={exportRef}
         className="tab-export-sheet pointer-events-none fixed left-[-10000px] top-0 z-[-1] w-198.5 bg-white p-8 text-black"
